@@ -1,0 +1,36 @@
+@page "/orders"
+@using Store.Dashboard.Models
+@using Store.Dashboard.Services
+@inject ApiService Api
+
+<PageTitle>Orders | Store Admin</PageTitle>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 style="font-weight: 700; margin: 0;">Order Management</h1>
+</div>
+
+<div class="card-premium">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="6" class="text-center py-4 text-muted">Order data integration in progress...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    // Logic for orders fetching will go here
+}

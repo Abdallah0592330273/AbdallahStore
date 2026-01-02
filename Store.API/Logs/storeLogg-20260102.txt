@@ -1,0 +1,193 @@
+[2026-01-02 19:49:40.026] [Store.API] [User: ] INF: Executed DbCommand (125ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-02 19:49:40.192] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2026-01-02 19:49:40.426] [Store.API] [User: ] INF: Executed DbCommand (223ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2026-01-02 19:49:40.667] [Store.API] [User: ] INF: Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2026-01-02 19:49:40.737] [Store.API] [User: ] INF: Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-02 19:49:40.742] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2026-01-02 19:49:40.824] [Store.API] [User: ] INF: Executed DbCommand (68ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2026-01-02 19:49:40.860] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2026-01-02 19:49:40.892] [Store.API] [User: ] INF: Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2026-01-02 19:49:41.683] [Store.API] [User: ] INF: Executed DbCommand (372ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:49:41.812] [Store.API] [User: ] INF: Executed DbCommand (117ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:49:41.865] [Store.API] [User: ] INF: Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Addresses] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:49:41.888] [Store.API] [User: ] INF: Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:49:41.947] [Store.API] [User: ] INF: Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:49:41.970] [Store.API] [User: ] INF: Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:49:41.993] [Store.API] [User: ] INF: Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:49:42.281] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-01-02 19:49:42.887] [Store.API] [User: ] INF: Now listening on: https://localhost:7158
+[2026-01-02 19:49:42.888] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2026-01-02 19:49:42.957] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2026-01-02 19:49:42.958] [Store.API] [User: ] INF: Hosting environment: Development
+[2026-01-02 19:49:42.958] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2026-01-02 19:49:44.460] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/swagger - null null
+[2026-01-02 19:49:45.105] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/swagger - 301 null null 658.4745ms
+[2026-01-02 19:49:45.143] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/swagger/index.html - null null
+[2026-01-02 19:49:45.402] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/swagger/index.html - 200 null text/html;charset=utf-8 258.6846ms
+[2026-01-02 19:49:45.463] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/swagger/swagger-ui.css - null null
+[2026-01-02 19:49:45.464] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/swagger/swagger-ui-bundle.js - null null
+[2026-01-02 19:49:45.466] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/swagger/swagger-ui-standalone-preset.js - null null
+[2026-01-02 19:49:45.647] [Store.API] [User: ] INF: Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2026-01-02 19:49:45.648] [Store.API] [User: ] INF: Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2026-01-02 19:49:45.648] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 182.4877ms
+[2026-01-02 19:49:45.648] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/swagger/swagger-ui.css - 200 144929 text/css 185.1587ms
+[2026-01-02 19:49:45.667] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/_framework/aspnetcore-browser-refresh.js - null null
+[2026-01-02 19:49:45.684] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/_framework/aspnetcore-browser-refresh.js - 200 16502 application/javascript; charset=utf-8 16.6964ms
+[2026-01-02 19:49:45.692] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/_vs/browserLink - null null
+[2026-01-02 19:49:45.693] [Store.API] [User: ] INF: Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2026-01-02 19:49:45.693] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 228.9818ms
+[2026-01-02 19:49:45.860] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/_vs/browserLink - 200 null text/javascript; charset=UTF-8 167.8489ms
+[2026-01-02 19:49:50.759] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/swagger/v1/swagger.json - null null
+[2026-01-02 19:49:50.843] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 83.4676ms
+[2026-01-02 19:49:51.399] [Store.API] [User: ] INF: Request starting HTTP/2 GET https://localhost:7158/swagger/favicon-32x32.png - null null
+[2026-01-02 19:49:51.400] [Store.API] [User: ] INF: Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2026-01-02 19:49:51.401] [Store.API] [User: ] INF: Request finished HTTP/2 GET https://localhost:7158/swagger/favicon-32x32.png - 200 628 image/png 1.5837ms
+[2026-01-02 19:53:25.992] [Store.API] [User: ] INF: Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-02 19:53:26.041] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2026-01-02 19:53:26.089] [Store.API] [User: ] INF: Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2026-01-02 19:53:26.175] [Store.API] [User: ] INF: Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2026-01-02 19:53:26.195] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-02 19:53:26.196] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2026-01-02 19:53:26.208] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2026-01-02 19:53:26.219] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2026-01-02 19:53:26.227] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2026-01-02 19:53:26.496] [Store.API] [User: ] INF: Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:53:26.510] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:53:26.518] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Addresses] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:53:26.527] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:53:26.535] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:53:26.542] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:53:26.549] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2026-01-02 19:53:26.654] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-01-02 19:53:26.759] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2026-01-02 19:53:26.761] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2026-01-02 19:53:26.761] [Store.API] [User: ] INF: Hosting environment: Development
+[2026-01-02 19:53:26.761] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2026-01-02 20:06:01.639] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2026-01-02 20:06:02.129] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 514.8487ms
+[2026-01-02 20:06:02.873] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2026-01-02 20:06:03.401] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 528.1319ms
