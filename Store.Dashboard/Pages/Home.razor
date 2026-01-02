@@ -1,0 +1,90 @@
+﻿@page "/"
+@using Store.Dashboard.Models
+@using Store.Dashboard.Services
+@inject ApiService Api
+
+<PageTitle>Dashboard | Store Admin</PageTitle>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 style="font-weight: 700; margin: 0;">Dashboard Overview</h1>
+    <div class="text-muted" style="font-size: 0.875rem;">Last update: @DateTime.Now.ToString("HH:mm")</div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card-premium">
+            <div style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Total Products</div>
+            <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">@_products?.Count</div>
+            <div style="font-size: 0.75rem; color: #10b981; margin-top: 4px;">&#9650; 12% from last month</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card-premium">
+            <div style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Total Brands</div>
+            <div style="font-size: 2rem; font-weight: 700; color: #8b5cf6;">@_brands?.Count</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Active in store</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card-premium">
+            <div style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Categories</div>
+            <div style="font-size: 2rem; font-weight: 700; color: #f59e0b;">@_categories?.Count</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Organized sections</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card-premium">
+            <div style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Avg. Price</div>
+            <div style="font-size: 2rem; font-weight: 700; color: #ec4899;">$@(_products?.Any() == true ? _products.Average(p => p.Price).ToString("N2") : "0.00")</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Across all products</div>
+        </div>
+    </div>
+</div>
+
+<div class="card-premium mt-4">
+    <h3 style="font-weight: 700; margin-bottom: 1.5rem;">Inventory Insights</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="border-top: none;">Brand</th>
+                    <th style="border-top: none;">Count</th>
+                    <th style="border-top: none;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (_brands != null)
+                {
+                    @foreach (var brand in _brands.Take(5))
+                    {
+                        <tr>
+                            <td>@brand.Name</td>
+                            <td>@(_products?.Count(p => p.ProductBrand == brand.Name) ?? 0)</td>
+                            <td><a href="products" class="btn btn-sm" style="border: 1px solid var(--border); color: var(--primary);">View</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<ProductDto>? _products;
+    private List<BrandDto>? _brands;
+    private List<CategoryDto>? _categories;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try 
+        {
+            _products = await Api.GetProductsAsync();
+            _brands = await Api.GetBrandsAsync();
+            _categories = await Api.GetCategoriesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}

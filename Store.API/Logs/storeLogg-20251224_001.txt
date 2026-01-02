@@ -1,0 +1,1834 @@
+[2025-12-24 15:28:34.504] [Store.API] [User: ] INF: Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:28:34.538] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:28:34.575] [Store.API] [User: ] INF: Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:28:34.637] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:28:34.651] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:28:34.653] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:28:34.661] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:28:34.670] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:28:34.677] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:28:34.848] [Store.API] [User: ] INF: Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:28:34.857] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:28:34.862] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:28:34.867] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:28:34.873] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:28:34.879] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:28:34.949] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:28:35.022] [Store.API] [User: ] ERR: Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5025: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-12-24 15:30:43.420] [Store.API] [User: ] INF: Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:30:43.448] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:30:43.483] [Store.API] [User: ] INF: Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:30:43.539] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:30:43.552] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:30:43.554] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:30:43.567] [Store.API] [User: ] INF: Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:30:43.575] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:30:43.594] [Store.API] [User: ] INF: Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:30:43.753] [Store.API] [User: ] INF: Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:30:43.764] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:30:43.768] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:30:43.774] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:30:43.778] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:30:43.790] [Store.API] [User: ] INF: Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:30:43.848] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:30:43.908] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:30:43.909] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:30:43.909] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:30:43.909] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:32:19.803] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/products - null null
+[2025-12-24 15:32:19.836] [Store.API] [User: ] WRN: Failed to determine the https port for redirect.
+[2025-12-24 15:32:19.861] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.ProductsController.GetProducts (Store.API)'
+[2025-12-24 15:32:19.876] [Store.API] [User: Guest] INF: Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IReadOnlyList`1[Store.Application.Dtos.ProductToReturnDto]]] GetProducts() on controller Store.API.Controllers.ProductsController (Store.API).
+[2025-12-24 15:32:20.123] [Store.API] [User: Guest] INF: Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedDate], [p].[Description], [p].[IsDeleted], [p].[LastModifiedBy], [p].[LastModifiedDate], [p].[Name], [p].[PicturePublicId], [p].[PictureUrl], [p].[Price], [p].[ProductBrandId], [p].[ProductTypeId], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedDate], [p0].[IsDeleted], [p0].[LastModifiedBy], [p0].[LastModifiedDate], [p0].[Name], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedDate], [p1].[IsDeleted], [p1].[LastModifiedBy], [p1].[LastModifiedDate], [p1].[Name], [c].[Id], [c].[CreatedBy], [c].[CreatedDate], [c].[Description], [c].[IsDeleted], [c].[LastModifiedBy], [c].[LastModifiedDate], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [ProductTypes] AS [p0] ON [p].[ProductTypeId] = [p0].[Id]
+INNER JOIN [ProductBrands] AS [p1] ON [p].[ProductBrandId] = [p1].[Id]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+[2025-12-24 15:32:20.225] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.ProductsController.GetProducts (Store.API) in 346.5059ms
+[2025-12-24 15:32:20.227] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.ProductsController.GetProducts (Store.API)'
+[2025-12-24 15:32:20.228] [Store.API] [User: ] ERR: An unhandled exception has occurred while executing the request: Error mapping types.
+
+Mapping types:
+List`1 -> IReadOnlyList`1
+System.Collections.Generic.List`1[[Store.Core.Entities.Product, Store.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IReadOnlyList`1[[Store.Application.Dtos.ProductToReturnDto, Store.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> IReadOnlyList`1
+System.Collections.Generic.List`1[[Store.Core.Entities.Product, Store.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IReadOnlyList`1[[Store.Application.Dtos.ProductToReturnDto, Store.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Product -> ProductToReturnDto
+Store.Core.Entities.Product -> Store.Application.Dtos.ProductToReturnDto
+   at lambda_method326(Closure, Product, ProductToReturnDto, ResolutionContext)
+   at lambda_method325(Closure, IReadOnlyList`1, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method325(Closure, IReadOnlyList`1, IReadOnlyList`1, ResolutionContext)
+   at Store.API.Controllers.ProductsController.GetProducts() in C:\Users\acc\Desktop\New Folder\Store.API\Controllers\ProductsController.cs:line 27
+   at lambda_method79(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Store.API.Middleware.SerilogUserEnricherMiddleware.InvokeAsync(HttpContext context) in C:\Users\acc\Desktop\New Folder\Store.API\Middleware\SerilogUserEnricherMiddleware.cs:line 21
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Store.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\acc\Desktop\New Folder\Store.API\Middleware\ExceptionMiddleware.cs:line 24
+[2025-12-24 15:32:20.246] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/products - 500 null application/json 444.5992ms
+[2025-12-24 15:34:23.038] [Store.API] [User: ] INF: Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:34:23.071] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:34:23.110] [Store.API] [User: ] INF: Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:34:23.165] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:34:23.178] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:34:23.180] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:34:23.192] [Store.API] [User: ] INF: Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:34:23.200] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:34:23.222] [Store.API] [User: ] INF: Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:34:23.381] [Store.API] [User: ] INF: Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:34:23.397] [Store.API] [User: ] INF: Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:34:23.405] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:34:23.412] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:34:23.417] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:34:23.431] [Store.API] [User: ] INF: Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:34:23.491] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:34:23.546] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:34:23.547] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:34:23.547] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:34:23.547] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:35:22.979] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/products - null null
+[2025-12-24 15:35:23.023] [Store.API] [User: ] WRN: Failed to determine the https port for redirect.
+[2025-12-24 15:35:23.054] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.ProductsController.GetProducts (Store.API)'
+[2025-12-24 15:35:23.070] [Store.API] [User: Guest] INF: Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IReadOnlyList`1[Store.Application.Dtos.ProductToReturnDto]]] GetProducts() on controller Store.API.Controllers.ProductsController (Store.API).
+[2025-12-24 15:35:23.293] [Store.API] [User: Guest] INF: Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedDate], [p].[Description], [p].[IsDeleted], [p].[LastModifiedBy], [p].[LastModifiedDate], [p].[Name], [p].[PicturePublicId], [p].[PictureUrl], [p].[Price], [p].[ProductBrandId], [p].[ProductTypeId], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedDate], [p0].[IsDeleted], [p0].[LastModifiedBy], [p0].[LastModifiedDate], [p0].[Name], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedDate], [p1].[IsDeleted], [p1].[LastModifiedBy], [p1].[LastModifiedDate], [p1].[Name], [c].[Id], [c].[CreatedBy], [c].[CreatedDate], [c].[Description], [c].[IsDeleted], [c].[LastModifiedBy], [c].[LastModifiedDate], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [ProductTypes] AS [p0] ON [p].[ProductTypeId] = [p0].[Id]
+INNER JOIN [ProductBrands] AS [p1] ON [p].[ProductBrandId] = [p1].[Id]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+[2025-12-24 15:35:23.403] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.ProductsController.GetProducts (Store.API) in 331.4927ms
+[2025-12-24 15:35:23.405] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.ProductsController.GetProducts (Store.API)'
+[2025-12-24 15:35:23.407] [Store.API] [User: ] ERR: An unhandled exception has occurred while executing the request: Error mapping types.
+
+Mapping types:
+List`1 -> IReadOnlyList`1
+System.Collections.Generic.List`1[[Store.Core.Entities.Product, Store.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IReadOnlyList`1[[Store.Application.Dtos.ProductToReturnDto, Store.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> IReadOnlyList`1
+System.Collections.Generic.List`1[[Store.Core.Entities.Product, Store.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IReadOnlyList`1[[Store.Application.Dtos.ProductToReturnDto, Store.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Product -> ProductToReturnDto
+Store.Core.Entities.Product -> Store.Application.Dtos.ProductToReturnDto
+   at lambda_method326(Closure, Product, ProductToReturnDto, ResolutionContext)
+   at lambda_method325(Closure, IReadOnlyList`1, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method325(Closure, IReadOnlyList`1, IReadOnlyList`1, ResolutionContext)
+   at Store.API.Controllers.ProductsController.GetProducts() in C:\Users\acc\Desktop\New Folder\Store.API\Controllers\ProductsController.cs:line 27
+   at lambda_method79(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Store.API.Middleware.SerilogUserEnricherMiddleware.InvokeAsync(HttpContext context) in C:\Users\acc\Desktop\New Folder\Store.API\Middleware\SerilogUserEnricherMiddleware.cs:line 21
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Store.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\acc\Desktop\New Folder\Store.API\Middleware\ExceptionMiddleware.cs:line 24
+[2025-12-24 15:35:23.423] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/products - 500 null application/json 445.8643ms
+[2025-12-24 15:36:12.376] [Store.API] [User: ] INF: Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:36:12.419] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:36:12.460] [Store.API] [User: ] INF: Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:36:12.522] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:36:12.539] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:36:12.540] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:36:12.547] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:36:12.560] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:36:12.567] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:36:12.774] [Store.API] [User: ] INF: Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:36:12.784] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:36:12.788] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:36:12.792] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:36:12.796] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:36:12.801] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:36:12.873] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:36:12.951] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:36:12.952] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:36:12.952] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:36:12.952] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:36:37.318] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/products - null null
+[2025-12-24 15:36:37.347] [Store.API] [User: ] WRN: Failed to determine the https port for redirect.
+[2025-12-24 15:36:37.366] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.ProductsController.GetProducts (Store.API)'
+[2025-12-24 15:36:37.376] [Store.API] [User: Guest] INF: Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IReadOnlyList`1[Store.Application.Dtos.ProductToReturnDto]]] GetProducts() on controller Store.API.Controllers.ProductsController (Store.API).
+[2025-12-24 15:36:37.583] [Store.API] [User: Guest] INF: Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedDate], [p].[Description], [p].[IsDeleted], [p].[LastModifiedBy], [p].[LastModifiedDate], [p].[Name], [p].[PicturePublicId], [p].[PictureUrl], [p].[Price], [p].[ProductBrandId], [p].[ProductTypeId], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedDate], [p0].[IsDeleted], [p0].[LastModifiedBy], [p0].[LastModifiedDate], [p0].[Name], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedDate], [p1].[IsDeleted], [p1].[LastModifiedBy], [p1].[LastModifiedDate], [p1].[Name], [c].[Id], [c].[CreatedBy], [c].[CreatedDate], [c].[Description], [c].[IsDeleted], [c].[LastModifiedBy], [c].[LastModifiedDate], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [ProductTypes] AS [p0] ON [p].[ProductTypeId] = [p0].[Id]
+INNER JOIN [ProductBrands] AS [p1] ON [p].[ProductBrandId] = [p1].[Id]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+[2025-12-24 15:36:37.690] [Store.API] [User: Guest] INF: Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Store.Application.Dtos.ProductToReturnDto, Store.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-12-24 15:36:37.707] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.ProductsController.GetProducts (Store.API) in 328.7042ms
+[2025-12-24 15:36:37.709] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.ProductsController.GetProducts (Store.API)'
+[2025-12-24 15:36:37.713] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/products - 200 null application/json; charset=utf-8 394.9812ms
+[2025-12-24 15:37:14.630] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:37:14.707] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 76.5944ms
+[2025-12-24 15:37:14.855] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:37:15.049] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 194.1312ms
+[2025-12-24 15:38:01.294] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 63
+[2025-12-24 15:38:01.298] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 15:38:01.298] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 15:38:01.302] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 15:38:01.314] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 15:38:01.511] [Store.API] [User: Guest] INF: Executed DbCommand (56ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 15:38:01.667] [Store.API] [User: Guest] INF: Executed DbCommand (12ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 15:38:01.690] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 375.5756ms
+[2025-12-24 15:38:01.690] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 15:38:01.691] [Store.API] [User: ] ERR: An unhandled exception has occurred while executing the request: IDX10720: Unable to create KeyedHashAlgorithm for algorithm 'http://www.w3.org/2001/04/xmldsig-more#hmac-sha512', the key size must be greater than: '512' bits, key has '264' bits. (Parameter 'keyBytes')
+System.ArgumentOutOfRangeException: IDX10720: Unable to create KeyedHashAlgorithm for algorithm 'http://www.w3.org/2001/04/xmldsig-more#hmac-sha512', the key size must be greater than: '512' bits, key has '264' bits. (Parameter 'keyBytes')
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.ValidateKeySize(Byte[] keyBytes, String algorithm, Int32 expectedNumberOfBytes)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateKeyedHashAlgorithm(Byte[] keyBytes, String algorithm)
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.CreateKeyedHashAlgorithm()
+   at Microsoft.IdentityModel.Tokens.DisposableObjectPool`1.CreateInstance()
+   at Microsoft.IdentityModel.Tokens.DisposableObjectPool`1.Allocate()
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.GetKeyedHashAlgorithm(Byte[] keyBytes, String algorithm)
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.Sign(Byte[] input)
+   at Microsoft.IdentityModel.JsonWebTokens.JwtTokenUtilities.CreateEncodedSignature(String input, SigningCredentials signingCredentials)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateJwtSecurityTokenPrivate(SecurityTokenDescriptor tokenDescriptor)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateToken(SecurityTokenDescriptor tokenDescriptor)
+   at Store.Services.TokenService.CreateToken(ApplicationUser user, IList`1 roles) in C:\Users\acc\Desktop\New Folder\Store.Services\TokenService.cs:line 49
+   at Store.Services.AuthService.LoginAsync(String email, String password) in C:\Users\acc\Desktop\New Folder\Store.Services\AuthService.cs:line 35
+   at Store.API.Controllers.AccountController.Login(LoginDto loginDto) in C:\Users\acc\Desktop\New Folder\Store.API\Controllers\AccountController.cs:line 23
+   at lambda_method329(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Store.API.Middleware.SerilogUserEnricherMiddleware.InvokeAsync(HttpContext context) in C:\Users\acc\Desktop\New Folder\Store.API\Middleware\SerilogUserEnricherMiddleware.cs:line 21
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Store.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\acc\Desktop\New Folder\Store.API\Middleware\ExceptionMiddleware.cs:line 24
+[2025-12-24 15:38:01.701] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 500 null application/json 407.0619ms
+[2025-12-24 15:39:22.580] [Store.API] [User: ] INF: Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:39:22.624] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:39:22.669] [Store.API] [User: ] INF: Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:39:22.739] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:39:22.765] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:39:22.766] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:39:22.775] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:39:22.788] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:39:22.795] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:39:22.976] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:39:22.987] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:39:22.992] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:39:22.997] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:39:23.003] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:39:23.009] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:39:23.082] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:39:23.178] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:39:23.179] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:39:23.180] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:39:23.180] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:41:03.778] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 72
+[2025-12-24 15:41:03.813] [Store.API] [User: ] WRN: Failed to determine the https port for redirect.
+[2025-12-24 15:41:03.843] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 15:41:03.862] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 15:41:04.017] [Store.API] [User: Guest] INF: Executed DbCommand (16ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 15:41:04.199] [Store.API] [User: Guest] INF: Executed DbCommand (6ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 15:41:04.232] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 15:41:04.239] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 373.6307ms
+[2025-12-24 15:41:04.242] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 15:41:04.247] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 470.6573ms
+[2025-12-24 15:43:30.675] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:43:30.708] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 33.4062ms
+[2025-12-24 15:43:30.924] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:43:31.004] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 79.9321ms
+[2025-12-24 15:43:32.631] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:43:32.632] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 1.019ms
+[2025-12-24 15:43:32.701] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:43:32.716] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.1363ms
+[2025-12-24 15:43:34.017] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:43:34.018] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 0.6196ms
+[2025-12-24 15:43:34.122] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:43:34.134] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.0506ms
+[2025-12-24 15:43:34.269] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:43:34.269] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 0.5335ms
+[2025-12-24 15:43:34.347] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:43:34.361] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.1303ms
+[2025-12-24 15:43:34.462] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:43:34.462] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 0.5369ms
+[2025-12-24 15:43:34.626] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:43:34.638] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 11.9614ms
+[2025-12-24 15:44:06.514] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 63
+[2025-12-24 15:44:06.518] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 15:44:06.519] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 15:44:06.522] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 15:44:06.522] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 15:44:06.615] [Store.API] [User: Guest] INF: Executed DbCommand (16ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 15:44:06.710] [Store.API] [User: Guest] INF: Executed DbCommand (8ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 15:44:06.713] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 15:44:06.714] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 191.4614ms
+[2025-12-24 15:44:06.714] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 15:44:06.715] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 200.5223ms
+[2025-12-24 15:45:22.693] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/promote/superadmin@store.com - null 0
+[2025-12-24 15:45:22.695] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 15:45:22.695] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 15:45:22.705] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (SuperAdmin)
+[2025-12-24 15:45:22.708] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 15:45:22.708] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/promote/superadmin@store.com - 401 0 null 14.9841ms
+[2025-12-24 15:46:56.711] [Store.API] [User: ] INF: Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:46:56.747] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:46:56.805] [Store.API] [User: ] INF: Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:46:56.871] [Store.API] [User: ] INF: Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:46:56.885] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:46:56.887] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:46:56.898] [Store.API] [User: ] INF: Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:46:56.907] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:46:56.918] [Store.API] [User: ] INF: Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:46:57.082] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:46:57.092] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:46:57.097] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:46:57.102] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:46:57.106] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:46:57.113] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:46:57.194] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:46:57.282] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:46:57.283] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:46:57.283] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:46:57.283] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:47:22.138] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:47:22.239] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 103.0414ms
+[2025-12-24 15:47:22.356] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:47:22.493] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 137.0178ms
+[2025-12-24 15:52:58.875] [Store.API] [User: ] INF: Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:52:58.922] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:52:58.999] [Store.API] [User: ] INF: Executed DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:52:59.088] [Store.API] [User: ] INF: Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:52:59.103] [Store.API] [User: ] INF: Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:52:59.105] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:52:59.150] [Store.API] [User: ] INF: Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:52:59.158] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:52:59.172] [Store.API] [User: ] INF: Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:52:59.418] [Store.API] [User: ] INF: Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:52:59.431] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:52:59.436] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:52:59.442] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:52:59.446] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:52:59.452] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:52:59.560] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:52:59.683] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:52:59.687] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:52:59.687] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:52:59.687] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:54:07.414] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:54:07.565] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 157.1709ms
+[2025-12-24 15:54:07.600] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/swagger-ui-bundle.js - null null
+[2025-12-24 15:54:07.600] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/swagger-ui-standalone-preset.js - null null
+[2025-12-24 15:54:07.600] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/swagger-ui.css - null null
+[2025-12-24 15:54:07.653] [Store.API] [User: ] INF: Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2025-12-24 15:54:07.654] [Store.API] [User: ] INF: Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2025-12-24 15:54:07.654] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/swagger-ui.css - 200 144929 text/css 54.5277ms
+[2025-12-24 15:54:07.654] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 54.8536ms
+[2025-12-24 15:54:07.669] [Store.API] [User: ] INF: Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2025-12-24 15:54:07.669] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 69.9338ms
+[2025-12-24 15:54:08.164] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:54:08.255] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/favicon-32x32.png - null null
+[2025-12-24 15:54:08.256] [Store.API] [User: ] INF: Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2025-12-24 15:54:08.256] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/favicon-32x32.png - 200 628 image/png 1.3049ms
+[2025-12-24 15:54:08.428] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/favicon-32x32.png - null null
+[2025-12-24 15:54:08.428] [Store.API] [User: ] INF: Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2025-12-24 15:54:08.428] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/favicon-32x32.png - 200 628 image/png 0.72ms
+[2025-12-24 15:54:08.615] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 451.2277ms
+[2025-12-24 15:54:20.712] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:54:20.713] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 1.4163ms
+[2025-12-24 15:54:21.184] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:54:21.203] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.3035ms
+[2025-12-24 15:55:05.485] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:55:05.514] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.3795ms
+[2025-12-24 15:55:05.675] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/favicon.ico - null null
+[2025-12-24 15:55:05.686] [Store.API] [User: ] WRN: Failed to determine the https port for redirect.
+[2025-12-24 15:55:05.841] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/favicon.ico - 404 0 null 166.3739ms
+[2025-12-24 15:55:05.878] [Store.API] [User: ] INF: Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/favicon.ico, Response status code: 404
+[2025-12-24 15:55:14.372] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:55:14.378] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 2.3673ms
+[2025-12-24 15:55:14.623] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:55:14.648] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.5381ms
+[2025-12-24 15:55:51.012] [Store.API] [User: ] INF: Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:55:51.054] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:55:51.162] [Store.API] [User: ] INF: Executed DbCommand (104ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:55:51.240] [Store.API] [User: ] INF: Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:55:51.257] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:55:51.258] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:55:51.311] [Store.API] [User: ] INF: Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:55:51.319] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:55:51.337] [Store.API] [User: ] INF: Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:55:51.569] [Store.API] [User: ] INF: Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:55:51.582] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:55:51.588] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:55:51.593] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:55:51.601] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:55:51.613] [Store.API] [User: ] INF: Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:55:51.715] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:55:51.808] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:55:51.810] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:55:51.810] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:55:51.810] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:56:45.840] [Store.API] [User: ] INF: Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:56:45.880] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:56:45.917] [Store.API] [User: ] INF: Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:56:45.999] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:56:46.018] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:56:46.019] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:56:46.028] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:56:46.041] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:56:46.050] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:56:46.258] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:56:46.269] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:56:46.274] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:56:46.285] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:56:46.292] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:56:46.299] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:56:46.393] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:56:46.488] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:56:46.489] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:56:46.489] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:56:46.489] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:56:46.647] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:56:46.731] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 87.2229ms
+[2025-12-24 15:56:46.934] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:56:47.037] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 102.2265ms
+[2025-12-24 15:56:47.892] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:56:47.893] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 1.1819ms
+[2025-12-24 15:56:47.951] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:56:48.007] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 55.976ms
+[2025-12-24 15:57:18.524] [Store.API] [User: ] INF: Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:57:18.559] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 15:57:18.589] [Store.API] [User: ] INF: Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 15:57:18.649] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 15:57:18.664] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 15:57:18.666] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 15:57:18.673] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 15:57:18.682] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 15:57:18.689] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 15:57:18.865] [Store.API] [User: ] INF: Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:57:18.875] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:57:18.880] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:57:18.885] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:57:18.891] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:57:18.897] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 15:57:18.963] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 15:57:19.031] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 15:57:19.032] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 15:57:19.033] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 15:57:19.033] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 15:57:32.532] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:57:32.630] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 99.2221ms
+[2025-12-24 15:57:32.780] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:57:32.954] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 173.9649ms
+[2025-12-24 15:58:24.354] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 15:58:24.360] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 5.346ms
+[2025-12-24 15:58:24.643] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 15:58:24.685] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 41.8957ms
+[2025-12-24 15:58:44.615] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 63
+[2025-12-24 15:58:44.618] [Store.API] [User: ] WRN: Failed to determine the https port for redirect.
+[2025-12-24 15:58:44.621] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 15:58:44.622] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 15:58:44.663] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 15:58:44.685] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 15:58:45.112] [Store.API] [User: Guest] INF: Executed DbCommand (102ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 15:58:45.465] [Store.API] [User: Guest] INF: Executed DbCommand (22ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 15:58:45.518] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 15:58:45.529] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 838.3109ms
+[2025-12-24 15:58:45.529] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 15:58:45.538] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 922.8563ms
+[2025-12-24 15:59:14.429] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 15:59:14.454] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 15:59:14.461] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 15:59:14.464] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 15:59:14.468] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 15:59:14.468] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 39.5903ms
+[2025-12-24 16:00:08.442] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:00:08.446] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:00:08.446] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:00:08.451] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:00:08.452] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:00:08.453] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 10.1303ms
+[2025-12-24 16:00:19.128] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Basket - null null
+[2025-12-24 16:00:19.129] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:00:19.129] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:00:19.129] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:00:19.130] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:00:19.130] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Basket - 401 0 null 1.448ms
+[2025-12-24 16:02:32.968] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 72
+[2025-12-24 16:02:32.970] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:02:32.970] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:02:33.065] [Store.API] [User: Guest] INF: Executed DbCommand (26ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:02:33.141] [Store.API] [User: Guest] INF: Executed DbCommand (9ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 16:02:33.142] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 16:02:33.143] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 172.4397ms
+[2025-12-24 16:02:33.143] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:02:33.143] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 174.4219ms
+[2025-12-24 16:04:38.246] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 2
+[2025-12-24 16:04:38.247] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:04:38.247] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:04:38.273] [Store.API] [User: Guest] INF: Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2025-12-24 16:04:38.291] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 44.5559ms
+[2025-12-24 16:04:38.292] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:04:38.292] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 400 null application/problem+json; charset=utf-8 45.3674ms
+[2025-12-24 16:05:00.608] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - null null
+[2025-12-24 16:05:00.609] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:05:00.609] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:05:00.612] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2025-12-24 16:05:00.614] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 4.9668ms
+[2025-12-24 16:05:00.614] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:05:00.614] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 415 null application/problem+json; charset=utf-8 5.6857ms
+[2025-12-24 16:05:14.242] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 16:05:14.243] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 1.0101ms
+[2025-12-24 16:05:14.403] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 16:05:14.428] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.3345ms
+[2025-12-24 16:05:54.269] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 47
+[2025-12-24 16:05:54.276] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:05:54.276] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:05:54.278] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:05:54.278] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:05:54.311] [Store.API] [User: Guest] INF: Executed DbCommand (28ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:05:54.320] [Store.API] [User: Guest] INF: Executing BadRequestObjectResult, writing value of type 'Store.API.Errors.ApiResponse'.
+[2025-12-24 16:05:54.330] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 51.4087ms
+[2025-12-24 16:05:54.330] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:05:54.330] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 400 null application/json; charset=utf-8 61.256ms
+[2025-12-24 16:06:21.794] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 47
+[2025-12-24 16:06:21.794] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:06:21.794] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:06:21.794] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:06:21.794] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:06:21.812] [Store.API] [User: Guest] INF: Executed DbCommand (16ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:06:21.812] [Store.API] [User: Guest] INF: Executing BadRequestObjectResult, writing value of type 'Store.API.Errors.ApiResponse'.
+[2025-12-24 16:06:21.812] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 17.6532ms
+[2025-12-24 16:06:21.812] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:06:21.812] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 400 null application/json; charset=utf-8 18.4417ms
+[2025-12-24 16:07:14.792] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 57
+[2025-12-24 16:07:14.793] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:07:14.793] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:07:14.793] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:07:14.793] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:07:14.812] [Store.API] [User: Guest] INF: Executed DbCommand (17ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:07:14.920] [Store.API] [User: Guest] INF: Executed DbCommand (15ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 16:07:14.922] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 16:07:14.923] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 129.3077ms
+[2025-12-24 16:07:14.923] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:07:14.924] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 131.6106ms
+[2025-12-24 16:10:03.244] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:10:03.251] [Store.API] [User: ] INF: Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:10:03.254] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+[2025-12-24 16:10:03.256] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:10:03.257] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:10:03.257] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 12.8749ms
+[2025-12-24 16:11:40.445] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 57
+[2025-12-24 16:11:40.445] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:11:40.445] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:11:40.446] [Store.API] [User: ] INF: Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:11:40.447] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+[2025-12-24 16:11:40.448] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:11:40.450] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:11:40.509] [Store.API] [User: Guest] INF: Executed DbCommand (51ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:11:40.620] [Store.API] [User: Guest] INF: Executed DbCommand (14ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 16:11:40.622] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 16:11:40.622] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 172.3418ms
+[2025-12-24 16:11:40.622] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:11:40.623] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 178.0832ms
+[2025-12-24 16:13:05.906] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 57
+[2025-12-24 16:13:05.908] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:13:05.909] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:13:05.916] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:13:05.919] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:13:05.919] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:13:05.920] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:13:05.959] [Store.API] [User: Guest] INF: Executed DbCommand (25ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:13:06.103] [Store.API] [User: Guest] INF: Executed DbCommand (23ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 16:13:06.104] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 16:13:06.105] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 185.2709ms
+[2025-12-24 16:13:06.108] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:13:06.110] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 203.4391ms
+[2025-12-24 16:13:17.021] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 16:13:17.033] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 11.9623ms
+[2025-12-24 16:13:17.317] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 16:13:17.412] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 94.8498ms
+[2025-12-24 16:15:33.876] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:15:33.890] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:15:33.892] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:15:33.892] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 16.5067ms
+[2025-12-24 16:18:52.149] [Store.API] [User: ] INF: Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 16:18:52.182] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 16:18:52.231] [Store.API] [User: ] INF: Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 16:18:52.306] [Store.API] [User: ] INF: Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 16:18:52.321] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 16:18:52.322] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 16:18:52.345] [Store.API] [User: ] INF: Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 16:18:52.353] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 16:18:52.362] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 16:18:52.627] [Store.API] [User: ] INF: Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:18:52.640] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:18:52.647] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:18:52.674] [Store.API] [User: ] INF: Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:18:52.678] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:18:52.685] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:18:52.771] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 16:18:52.870] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 16:18:52.872] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 16:18:52.872] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 16:18:52.873] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 16:21:53.950] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:21:53.987] [Store.API] [User: ] WRN: Failed to determine the https port for redirect.
+[2025-12-24 16:21:54.013] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AddressController.GetUserAddress (Store.API)'
+[2025-12-24 16:21:54.024] [Store.API] [User: Guest] INF: Route matched with {action = "GetUserAddress", controller = "Address"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.AddressDto]] GetUserAddress() on controller Store.API.Controllers.AddressController (Store.API).
+[2025-12-24 16:21:54.092] [Store.API] [User: Guest] INF: Executing UnauthorizedObjectResult, writing value of type 'Store.API.Errors.ApiResponse'.
+[2025-12-24 16:21:54.102] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AddressController.GetUserAddress (Store.API) in 75.8239ms
+[2025-12-24 16:21:54.104] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AddressController.GetUserAddress (Store.API)'
+[2025-12-24 16:21:54.105] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 null application/json; charset=utf-8 156.2975ms
+[2025-12-24 16:27:16.159] [Store.API] [User: ] INF: Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 16:27:16.190] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 16:27:16.227] [Store.API] [User: ] INF: Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 16:27:16.279] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 16:27:16.293] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 16:27:16.294] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 16:27:16.302] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 16:27:16.310] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 16:27:16.317] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 16:27:16.468] [Store.API] [User: ] INF: Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:27:16.476] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:27:16.486] [Store.API] [User: ] INF: Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Addresses] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:27:16.569] [Store.API] [User: ] INF: Executed DbCommand (16ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:27:16.634] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:27:16.636] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:27:16.637] [Store.API] [User: ] INF: Executed DbCommand (0ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:27:16.638] [Store.API] [User: ] INF: Executed DbCommand (0ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:27:16.799] [Store.API] [User: ] INF: Executed DbCommand (59ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTimeOffset), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (Size = 4000), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (DbType = DateTimeOffset), @p16='?' (Size = 4000), @p17='?' (DbType = Boolean), @p18='?' (Size = 4000), @p19='?' (DbType = DateTimeOffset), @p20='?' (Size = 4000), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (DbType = Int32), @p25='?' (Size = 4000), @p26='?' (Size = 4000), @p27='?' (DbType = DateTimeOffset), @p28='?' (Size = 4000), @p29='?' (DbType = Boolean), @p30='?' (Size = 4000), @p31='?' (DbType = DateTimeOffset), @p32='?' (Size = 4000), @p33='?' (Size = 4000), @p34='?' (Size = 4000), @p35='?' (Size = 4000), @p36='?' (DbType = Int32), @p37='?' (Size = 4000), @p38='?' (Size = 4000), @p39='?' (DbType = DateTimeOffset), @p40='?' (Size = 4000), @p41='?' (DbType = Boolean), @p42='?' (Size = 4000), @p43='?' (DbType = DateTimeOffset), @p44='?' (Size = 4000), @p45='?' (Size = 4000), @p46='?' (Size = 4000), @p47='?' (Size = 4000), @p48='?' (DbType = Int32), @p49='?' (Size = 4000), @p50='?' (Size = 4000), @p51='?' (DbType = DateTimeOffset), @p52='?' (Size = 4000), @p53='?' (DbType = Boolean), @p54='?' (Size = 4000), @p55='?' (DbType = DateTimeOffset), @p56='?' (Size = 4000), @p57='?' (Size = 4000), @p58='?' (Size = 4000), @p59='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [Addresses] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, 0),
+(@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, 1),
+(@p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, 2),
+(@p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, 3),
+(@p48, @p49, @p50, @p51, @p52, @p53, @p54, @p55, @p56, @p57, @p58, @p59, 4)) AS i ([ApplicationUserId], [City], [CreatedBy], [CreatedDate], [FirstName], [IsDeleted], [LastModifiedBy], [LastModifiedDate], [LastName], [State], [Street], [ZipCode], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([ApplicationUserId], [City], [CreatedBy], [CreatedDate], [FirstName], [IsDeleted], [LastModifiedBy], [LastModifiedDate], [LastName], [State], [Street], [ZipCode])
+VALUES (i.[ApplicationUserId], i.[City], i.[CreatedBy], i.[CreatedDate], i.[FirstName], i.[IsDeleted], i.[LastModifiedBy], i.[LastModifiedDate], i.[LastName], i.[State], i.[Street], i.[ZipCode])
+OUTPUT INSERTED.[Id], i._Position;
+[2025-12-24 16:27:16.819] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:27:16.824] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:27:16.829] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:27:16.835] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:27:16.893] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 16:27:16.952] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 16:27:16.954] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 16:27:16.954] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 16:27:16.954] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 16:29:18.621] [Store.API] [User: ] INF: Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 16:29:18.654] [Store.API] [User: ] INF: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+[2025-12-24 16:29:18.690] [Store.API] [User: ] INF: Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+[2025-12-24 16:29:18.745] [Store.API] [User: ] INF: Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+[2025-12-24 16:29:18.758] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2025-12-24 16:29:18.759] [Store.API] [User: ] INF: Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2025-12-24 16:29:18.766] [Store.API] [User: ] INF: Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2025-12-24 16:29:18.775] [Store.API] [User: ] INF: No migrations were applied. The database is already up to date.
+[2025-12-24 16:29:18.784] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+[2025-12-24 16:29:18.942] [Store.API] [User: ] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:29:18.951] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:29:18.957] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Addresses] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:29:18.961] [Store.API] [User: ] INF: Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductBrands] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:29:18.966] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductTypes] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:29:18.971] [Store.API] [User: ] INF: Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:29:18.977] [Store.API] [User: ] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2025-12-24 16:29:19.043] [Store.API] [User: ] INF: User profile is available. Using 'C:\Users\acc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-12-24 16:29:19.124] [Store.API] [User: ] INF: Now listening on: http://localhost:5025
+[2025-12-24 16:29:19.126] [Store.API] [User: ] INF: Application started. Press Ctrl+C to shut down.
+[2025-12-24 16:29:19.126] [Store.API] [User: ] INF: Hosting environment: Development
+[2025-12-24 16:29:19.126] [Store.API] [User: ] INF: Content root path: C:\Users\acc\Desktop\New Folder\Store.API
+[2025-12-24 16:31:02.387] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 16:31:02.542] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 158.4704ms
+[2025-12-24 16:31:02.714] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 16:31:02.925] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 211.4277ms
+[2025-12-24 16:31:24.748] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 63
+[2025-12-24 16:31:24.752] [Store.API] [User: ] WRN: Failed to determine the https port for redirect.
+[2025-12-24 16:31:24.754] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:31:24.754] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:31:24.789] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:31:24.810] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:31:25.033] [Store.API] [User: Guest] INF: Executed DbCommand (28ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:31:25.254] [Store.API] [User: Guest] INF: Executed DbCommand (10ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 16:31:25.294] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 16:31:25.301] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 486.4652ms
+[2025-12-24 16:31:25.302] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:31:25.307] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 558.0804ms
+[2025-12-24 16:31:42.050] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:31:42.063] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:31:42.070] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:31:42.071] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 20.543ms
+[2025-12-24 16:32:00.768] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:32:00.784] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:00.788] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:00.790] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:32:00.792] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:32:00.792] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 24.3444ms
+[2025-12-24 16:32:01.465] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:32:01.466] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:01.466] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:01.466] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:32:01.466] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:32:01.466] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 1.4494ms
+[2025-12-24 16:32:01.986] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:32:01.987] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:01.987] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:01.987] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:32:01.987] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:32:01.987] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 1.2273ms
+[2025-12-24 16:32:02.175] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:32:02.176] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:02.176] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:02.176] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:32:02.176] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:32:02.176] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 1.1572ms
+[2025-12-24 16:32:02.360] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:32:02.361] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:02.361] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:02.361] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:32:02.361] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:32:02.361] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 1.1412ms
+[2025-12-24 16:32:02.539] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:32:02.539] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:02.540] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:02.540] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:32:02.540] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:32:02.540] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 1.1777ms
+[2025-12-24 16:32:02.746] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:32:02.746] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:02.747] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:02.747] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-12-24 16:32:02.747] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:32:02.747] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 401 0 null 0.9758ms
+[2025-12-24 16:32:08.206] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Brands - null null
+[2025-12-24 16:32:08.206] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:08.206] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:08.207] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.BrandsController.GetBrands (Store.API)'
+[2025-12-24 16:32:08.223] [Store.API] [User: Guest] INF: Route matched with {action = "GetBrands", controller = "Brands"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IReadOnlyList`1[Store.Application.Dtos.BrandDto]]] GetBrands() on controller Store.API.Controllers.BrandsController (Store.API).
+[2025-12-24 16:32:08.372] [Store.API] [User: Guest] INF: Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedBy], [p].[CreatedDate], [p].[IsDeleted], [p].[LastModifiedBy], [p].[LastModifiedDate], [p].[Name]
+FROM [ProductBrands] AS [p]
+[2025-12-24 16:32:08.388] [Store.API] [User: Guest] INF: Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Store.Application.Dtos.BrandDto, Store.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-12-24 16:32:08.389] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.BrandsController.GetBrands (Store.API) in 165.9081ms
+[2025-12-24 16:32:08.389] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.BrandsController.GetBrands (Store.API)'
+[2025-12-24 16:32:08.389] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Brands - 200 null application/json; charset=utf-8 183.5451ms
+[2025-12-24 16:32:17.332] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Category - null null
+[2025-12-24 16:32:17.332] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:32:17.333] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:32:17.333] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.CategoryController.GetCategories (Store.API)'
+[2025-12-24 16:32:17.339] [Store.API] [User: Guest] INF: Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IReadOnlyList`1[Store.Application.Dtos.CategoryDto]]] GetCategories() on controller Store.API.Controllers.CategoryController (Store.API).
+[2025-12-24 16:32:17.354] [Store.API] [User: Guest] INF: Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedBy], [c].[CreatedDate], [c].[Description], [c].[IsDeleted], [c].[LastModifiedBy], [c].[LastModifiedDate], [c].[Name]
+FROM [Categories] AS [c]
+[2025-12-24 16:32:17.370] [Store.API] [User: Guest] INF: Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Store.Application.Dtos.CategoryDto, Store.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-12-24 16:32:17.371] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.CategoryController.GetCategories (Store.API) in 32.0159ms
+[2025-12-24 16:32:17.371] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.CategoryController.GetCategories (Store.API)'
+[2025-12-24 16:32:17.372] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Category - 200 null application/json; charset=utf-8 39.5809ms
+[2025-12-24 16:33:01.678] [Store.API] [User: ] INF: Request starting HTTP/1.1 PUT http://localhost:5025/api/Category/5 - application/json 60
+[2025-12-24 16:33:01.678] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:33:01.678] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:33:01.679] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:33:01.679] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:33:01.680] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-12-24 16:33:01.680] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:33:01.680] [Store.API] [User: ] INF: Request finished HTTP/1.1 PUT http://localhost:5025/api/Category/5 - 401 0 null 2.3366ms
+[2025-12-24 16:33:36.177] [Store.API] [User: ] INF: Request starting HTTP/1.1 PUT http://localhost:5025/api/Category/5 - application/json 60
+[2025-12-24 16:33:36.177] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:33:36.177] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:33:36.177] [Store.API] [User: ] INF: Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(ReadOnlySpan`1 strSpan, Span`1 output)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+[2025-12-24 16:33:36.178] [Store.API] [User: ] INF: Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+[2025-12-24 16:33:36.178] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-12-24 16:33:36.178] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was challenged.
+[2025-12-24 16:33:36.178] [Store.API] [User: ] INF: Request finished HTTP/1.1 PUT http://localhost:5025/api/Category/5 - 401 0 null 1.2298ms
+[2025-12-24 16:35:57.602] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 16:35:57.603] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 1.3344ms
+[2025-12-24 16:35:57.708] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 16:35:57.724] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.8244ms
+[2025-12-24 16:36:04.123] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+[2025-12-24 16:36:04.124] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 0.6057ms
+[2025-12-24 16:36:04.270] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+[2025-12-24 16:36:04.285] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.8925ms
+[2025-12-24 16:36:19.019] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Account/login - application/json 63
+[2025-12-24 16:36:19.020] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:36:19.020] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:36:19.020] [Store.API] [User: Guest] INF: Executing endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:36:19.021] [Store.API] [User: Guest] INF: Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.UserDto]] Login(Store.API.Controllers.LoginDto) on controller Store.API.Controllers.AccountController (Store.API).
+[2025-12-24 16:36:19.057] [Store.API] [User: Guest] INF: Executed DbCommand (11ms) [Parameters=[@normalizedEmail='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @normalizedEmail
+[2025-12-24 16:36:19.152] [Store.API] [User: Guest] INF: Executed DbCommand (6ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+[2025-12-24 16:36:19.152] [Store.API] [User: Guest] INF: Executing ObjectResult, writing value of type 'Store.Application.Dtos.UserDto'.
+[2025-12-24 16:36:19.152] [Store.API] [User: Guest] INF: Executed action Store.API.Controllers.AccountController.Login (Store.API) in 131.6732ms
+[2025-12-24 16:36:19.152] [Store.API] [User: Guest] INF: Executed endpoint 'Store.API.Controllers.AccountController.Login (Store.API)'
+[2025-12-24 16:36:19.153] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Account/login - 200 null application/json; charset=utf-8 133.6908ms
+[2025-12-24 16:36:47.139] [Store.API] [User: ] INF: Request starting HTTP/1.1 GET http://localhost:5025/api/Address - null null
+[2025-12-24 16:36:47.173] [Store.API] [User: superadmin@store.com] INF: Executing endpoint 'Store.API.Controllers.AddressController.GetUserAddress (Store.API)'
+[2025-12-24 16:36:47.177] [Store.API] [User: superadmin@store.com] INF: Route matched with {action = "GetUserAddress", controller = "Address"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Store.Application.Dtos.AddressDto]] GetUserAddress() on controller Store.API.Controllers.AddressController (Store.API).
+[2025-12-24 16:36:47.261] [Store.API] [User: superadmin@store.com] INF: Executed DbCommand (43ms) [Parameters=[@email='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedBy], [a].[CreatedDate], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastModifiedBy], [a].[LastModifiedDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PicturePublicId], [a].[PictureUrl], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a0].[Id], [a0].[ApplicationUserId], [a0].[City], [a0].[CreatedBy], [a0].[CreatedDate], [a0].[FirstName], [a0].[IsDeleted], [a0].[LastModifiedBy], [a0].[LastModifiedDate], [a0].[LastName], [a0].[State], [a0].[Street], [a0].[ZipCode]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Addresses] AS [a0] ON [a].[Id] = [a0].[ApplicationUserId]
+WHERE [a].[Email] = @email
+[2025-12-24 16:36:47.310] [Store.API] [User: superadmin@store.com] INF: Executing OkObjectResult, writing value of type 'Store.Application.Dtos.AddressDto'.
+[2025-12-24 16:36:47.311] [Store.API] [User: superadmin@store.com] INF: Executed action Store.API.Controllers.AddressController.GetUserAddress (Store.API) in 134.7773ms
+[2025-12-24 16:36:47.311] [Store.API] [User: superadmin@store.com] INF: Executed endpoint 'Store.API.Controllers.AddressController.GetUserAddress (Store.API)'
+[2025-12-24 16:36:47.312] [Store.API] [User: ] INF: Request finished HTTP/1.1 GET http://localhost:5025/api/Address - 200 null application/json; charset=utf-8 172.9989ms
+[2025-12-24 16:37:30.812] [Store.API] [User: ] INF: Request starting HTTP/1.1 POST http://localhost:5025/api/Brands - application/json 35
+[2025-12-24 16:37:30.812] [Store.API] [User: ] INF: CORS policy execution failed.
+[2025-12-24 16:37:30.812] [Store.API] [User: ] INF: Request origin http://localhost:5025 does not have permission to access the resource.
+[2025-12-24 16:37:30.813] [Store.API] [User: ] INF: Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-12-24 16:37:30.819] [Store.API] [User: ] INF: AuthenticationScheme: Bearer was forbidden.
+[2025-12-24 16:37:30.819] [Store.API] [User: ] INF: Request finished HTTP/1.1 POST http://localhost:5025/api/Brands - 403 0 null 7.0586ms

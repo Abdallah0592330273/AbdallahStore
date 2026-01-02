@@ -1,0 +1,62 @@
+@page "/products"
+@using Store.Dashboard.Models
+@using Store.Dashboard.Services
+@inject ApiService Api
+
+<PageTitle>Products | Store Admin</PageTitle>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 style="font-weight: 700; margin: 0;">Product Management</h1>
+    <button class="btn btn-primary" style="font-weight: 600; border-radius: 8px; padding: 10px 20px;">
+        <span class="oi oi-plus"></span> Add Product
+    </button>
+</div>
+
+<div class="card-premium">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (_products == null)
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-4">Loading products...</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var product in _products)
+                    {
+                        <tr>
+                            <td style="font-weight: 600;">@product.Name</td>
+                            <td><span class="badge bg-light text-dark" style="font-weight: 500;">@product.ProductBrand</span></td>
+                            <td>@product.Category</td>
+                            <td style="font-weight: 600; color: var(--primary);">$@product.Price.ToString("N2")</td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-outline-secondary me-2">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<ProductDto>? _products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _products = await Api.GetProductsAsync();
+    }
+}
